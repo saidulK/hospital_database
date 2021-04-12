@@ -267,5 +267,6 @@ create("Patient_Admission",connection,cursor)
 #retrieve("Patient_Outdoor",connection,cursor)
 #update("Patient_Admission",connection,cursor)
 #delete("Patient_Outdoor",connection,cursor)
+"asjhdaoishiafpoao[foafo[a[sf[apfkp[askfp[afspp"
 connection.close()
 
