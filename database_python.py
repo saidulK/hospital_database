@@ -2,16 +2,21 @@ import mysql.connector
 from mysql.connector import FieldType
 
 
-ALL_VIEWS = {"Patient_Outdoor":{"doctor_view":"NAME, AGE, SEX, SYMPTOMPS, DIAGNOSIS, MEDICINE, CONTACT","staff_view":""}
-			,"Patient_Admission":{"doctor_view":"","staff_view":""}
-			,"Patient_Emergency":{"doctor_view":"","staff_view":""}}
+ALL_VIEWS = {"Patient_Outdoor":{"doctor_view":"NAME, AGE, SEX, SYMPTOMPS, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME"
+			,"staff_view":"ID, NAME, AGE, SEX, ADDRESS, CONTACT, DOC_NAME, VISIT_DATE"}
+			,"Patient_Admission":{"doctor_view":"NAME, AGE, SEX, SYMPTOMPS, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME, WARD, BUILDING_NO, ROOM_NO,BED_NO"
+			,"staff_view":"ID, NAME, AGE, SEX, ADDRESS, CONTACT, DOC_NAME, VISIT_DATE, WARD, BUILDING_NO, ROOM_NO, BED_NO, ADMIT_DATE"}
+			,"Patient_Emergency":{"doctor_view":"NAME, AGE, SEX, SYMPTOMPS, EMERGENCY, MEDICINE, CONTACT, DOC_NAME"
+			,"staff_view":"ID, NAME, AGE, SEX, ADDRESS, EMERGENCY, CONTACT, DOC_NAME, VISIT_DATE"}}
+
 def connect2server(server_name,password=""):
 	try:
 		connection = mysql.connector.connect(host="localhost",user="root",passwd=password,database=server_name )
 		cursor = connection.cursor(buffered = True)
 		print("Welcome to Hospital Database")
-	except:
-		print("Can't connect to Database")
+	except Exception as e:
+		print("Can't connect to Database: ",e)
+		return None,None
 	return connection,cursor
 
 def process_long(num):
@@ -260,13 +265,13 @@ def delete(table_name,connection,cursor):
 		print(e)
 		connection.rollback()
 
+if __name__ == "__main__":
+	connection,cursor = connect2server("medical database")
 
-connection,cursor = connect2server("medical database")
+	create("Patient_Admission",connection,cursor)
+	#retrieve("Patient_Outdoor",connection,cursor)
+	#update("Patient_Admission",connection,cursor)
+	#delete("Patient_Outdoor",connection,cursor)
 
-create("Patient_Admission",connection,cursor)
-#retrieve("Patient_Outdoor",connection,cursor)
-#update("Patient_Admission",connection,cursor)
-#delete("Patient_Outdoor",connection,cursor)
-"asjhdaoishiafpoao[foafo[a[sf[apfkp[askfp[afspp"
-connection.close()
+	connection.close()
 
