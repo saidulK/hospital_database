@@ -34,9 +34,7 @@ def get_login_info():
 		print("Invalid Command")
 		return get_login_info()
 
-def get_table_name():
-	inp = input()
-	return inp
+
 
 def get_input(field_name,field_type,tag="",func=None):
 	form=""
@@ -62,6 +60,18 @@ def get_input(field_name,field_type,tag="",func=None):
 	except:
 		print("Error! Please Input Again\n")
 		return get_input(field_name,field_type)
+
+def print_table_data(field_list,data):
+	if len(data) == 0 :
+		print("No data to print")
+	elif len(data) == 1:
+		for i,d in zip(field_list,data[0]):
+			print(i," :",d)
+	else:
+		for row in data:
+			print("\n")
+			for field,field_value in zip(field_list,row):
+				print(field," : ",field_value," ",end ="",sep="")
 
 
 def process_long(num):
@@ -161,12 +171,15 @@ def retrieve(table_name,connection,cursor,log_view):
 		if key_name =="":
 			cursor.execute("SELECT {} FROM {} WHERE DEL=FALSE".format(view,table_name))
 			data = cursor.fetchall()
-			print(cursor.description)
+			
 			if len(data) == 0:
 				raise Exception("Data doesn't Exist")
-			print(view)
-			for d in data:
-				print(d)
+			field_list = view.split(",")
+			print_table_data(field_list,data)	
+			#print(view)
+
+			#for d in data:
+			#	print(d)
 
 		elif key_name == "1": 
 			key_value = input("\nEnter {} value: ".format(primary_key_name))
@@ -175,9 +188,12 @@ def retrieve(table_name,connection,cursor,log_view):
 			if len(data) == 0:
 				raise Exception("Data doesn't Exist")
 			field_list = view.split(",")
-			print("\n\n Data for {} = {}:\n".format(primary_key_name,key_value))	
-			for i,d in zip(field_list,data[0]):
-				print(i," :",d)
+
+			print("\n\n Data for {} = {}:\n".format(primary_key_name,key_value))
+			print_table_data(field_list,data)	
+			#print("\n\n Data for {} = {}:\n".format(primary_key_name,key_value))	
+			#for i,d in zip(field_list,data[0]):
+			#	print(i," :",d)
 		else:	
 			print("\n\nEnter key values: \n\n* Press Enter if you want to skip key\n\n* Enter < or > to set range\n")
 			key_names = []
@@ -218,9 +234,11 @@ def retrieve(table_name,connection,cursor,log_view):
 
 			if len(data) == 0:
 				raise Exception("\n\nData doesn't Exist")
-			print(view)
-			for d in data:
-				print(d)
+			field_list = view.split(",")
+			print_table_data(field_list,data)
+			#print(view)
+			#for d in data:
+			#	print(d)
 	except Exception as e:
 		print(e)
 
