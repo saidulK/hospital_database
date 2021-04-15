@@ -21,11 +21,9 @@ NAME  VARCHAR(100) NOT NULL,
 AGE INT(3),
 SEX CHAR(10),
 ADDRESS VARCHAR(100),
-SYMPTOMPS TEXT,
-DIAGNOSIS TEXT,
-MEDICINE TEXT,
+REPORT_ID INT(20),
 CONTACT VARCHAR(15),
-DOC_NAME VARCHAR(100),
+DOC_ID INT(20),
 VISIT_DATE DATE, 
 DEL BOOLEAN DEFAULT FALSE)"""
 
@@ -35,11 +33,9 @@ NAME  VARCHAR(100) NOT NULL,
 AGE INT(3),
 SEX CHAR(10),
 ADDRESS VARCHAR(100),
-EMERGENCY TEXT,
-DIAGNOSIS TEXT,
-MEDICINE TEXT,
+REPORT_ID INT(20),
 CONTACT VARCHAR(15),
-DOC_NAME VARCHAR(100),
+DOC_ID INT(20),
 VISIT_DATE DATE, 
 DEL BOOLEAN DEFAULT FALSE)"""
 
@@ -53,12 +49,95 @@ WARD TEXT,
 BUILDING_NO INT(11),
 ROOM_NO INT(11),
 BED_NO INT(11),
-DIAGNOSIS TEXT,
-MEDICINE TEXT,
+REPORT_ID INT(20),
 CONTACT VARCHAR(15),
-DOC_NAME VARCHAR(100),
+DOC_ID INT(20),
 ADMIT_DATE DATE, 
 DEL BOOLEAN DEFAULT FALSE)"""
+
+Report_TableSql = """CREATE TABLE Report(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+PATIENT_ID INT(20) NOT NULL,
+PATIENT_NAME VARCHAR(100) NOT NULL,
+DOC_ID INT(20),
+DOC_NAME VARCHAR(100),
+DEPT VARCHAR(100),
+BLOOD_TYPE VARCHAR(20),
+SYMPTOMPS TEXT,
+DIAGNOSIS TEXT,
+MEDICINES TEXT,
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Doctor_TableSql = """CREATE TABLE Doctor(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(100) NOT NULL,
+SEX CHAR(10),
+CONTACT VARCHAR(15),
+ADDRESS VARCHAR(100),
+DEPT VARCHAR(100),
+CHAMBER_NO INT(20),
+BUILDING_NO INT(20),
+FEE INT(20),
+DEGREE TEXT,
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Staff_TableSql = """ CREATE TABLE Staff(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(100) NOT NULL,
+SEX CHAR(10),
+CONTACT VARCHAR(15),
+ADDRESS VARCHAR(100),
+BUILDING_NO INT(20),
+DUTY VARCHAR(100),
+SHIFT VARCHAR(100),
+WAGE INT(20),
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Vehicle_TableSql = """CREATE TABLE Vehicle(
+NUM_PLATE VARCHAR(100) PRIMARY KEY,
+BRAND VARCHAR(100),
+MODEL VARCHAR(100),
+PURPOSE VARCHAR(100),
+BUILDING_ID INT(20),
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Medicine_TableSql = """CREATE TABLE Medicine(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(100) NOT NULL,
+AVAILIBILITY BOOLEAN,
+COMPANY VARCHAR(100),
+EXPIRY_DATE DATE,
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Building_TableSql = """CREATE TABLE Building(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+ADDRESS VARCHAR(100),
+ROOM_NUM INT(20),
+MACHINE_NUM INT(20),
+VEHICLE_NUM INT(20),
+DOCTOR_NUM INT(20),
+DEPTS TEXT,
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Room_TableSql = """CREATE TABLE Room(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+BUILDING_ID INT(20) NOT NULL,
+DEPT_NAME VARCHAR(100),
+AVAILIBITY BOOLEAN,
+FEES INT(20),
+DEL BOOLEAN DEFAULT FALSE)"""
+
+Machines_TableSql = """CREATE TABLE Machines(
+ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(100) NOT NULL,
+ROOM_ID INT(20),
+BUILDING_ID INT(20),
+DEPT_NAME VARCHAR(100),
+DEL BOOLEAN DEFAULT FALSE)"""
+
+
+
+
 
 if not table_exists("Patient_Outdoor",cursor):
 	cursor.execute(Patient_Outdoor_TableSql)
@@ -71,6 +150,38 @@ if not table_exists("Patient_Emergency",cursor):
 if not table_exists("Patient_Admission",cursor):
 	cursor.execute(Patient_Admission_TableSql)
 	print("Patient Admission table created")
+
+if not table_exists("Report",cursor):
+	cursor.execute(Report_TableSql)
+	print("Report table created")
+
+if not table_exists("Doctor",cursor):
+	cursor.execute(Doctor_TableSql)
+	print("Doctor table created")
+
+if not table_exists("Staff",cursor):
+	cursor.execute(Staff_TableSql)
+	print("Staff table created")
+
+if not table_exists("Vehicle",cursor):
+	cursor.execute(Vehicle_TableSql)
+	print("Vehicle table created")
+
+if not table_exists("Medicine",cursor):
+	cursor.execute(Medicine_TableSql)
+	print("Medicine table created")
+
+if not table_exists("Building",cursor):
+	cursor.execute(Building_TableSql)
+	print("Building table created")
+
+if not table_exists("Room",cursor):
+	cursor.execute(Room_TableSql)
+	print("Room table created")
+
+if not table_exists("Machine",cursor):
+	cursor.execute(Machine_TableSql)
+	print("Machine table created")
 
 insert= "INSERT INTO Patient_Outdoor(NAME, AGE, SEX, ADDRESS, SYMPTOMPS, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME, VISIT_DATE)\
 	VALUES('Saidul Kabir',23,'MALE','126/1,WAPDA ROAD,RAMPURA,DHAKA','FEVER,COUGH','CORONA','NAPA','01910399849','DR ABCD','2020-2-21');"
