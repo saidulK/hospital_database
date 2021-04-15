@@ -15,6 +15,13 @@ def table_exists(table,cursor):
 
 connection,cursor = connect2server("medical database")
 
+ID = list(range(10))
+NAME = ["Sadman", "Sakib","Fahim","Salman"]
+AGE = [18,20,50,60]
+SEX = ["MALE","FEMALE"]
+ADDRESS = ["DHAKA","SYLHET","CHITTAGONG"]
+DATE = ["21-1-1","20-2-2","20-3-3"]
+
 Patient_Outdoor_TableSql = """CREATE TABLE Patient_Outdoor(
 ID INT(20) PRIMARY KEY AUTO_INCREMENT,
 NAME  VARCHAR(100) NOT NULL,
@@ -57,10 +64,10 @@ DEL BOOLEAN DEFAULT FALSE)"""
 
 Report_TableSql = """CREATE TABLE Report(
 ID INT(20) PRIMARY KEY AUTO_INCREMENT,
-PATIENT_ID INT(20) NOT NULL,
-PATIENT_NAME VARCHAR(100) NOT NULL,
+#PATIENT_ID INT(20) NOT NULL,
+#PATIENT_NAME VARCHAR(100) NOT NULL,
 DOC_ID INT(20),
-DOC_NAME VARCHAR(100),
+#DOC_NAME VARCHAR(100),
 DEPT VARCHAR(100),
 BLOOD_TYPE VARCHAR(20),
 SYMPTOMPS TEXT,
@@ -127,14 +134,13 @@ AVAILIBITY BOOLEAN,
 FEES INT(20),
 DEL BOOLEAN DEFAULT FALSE)"""
 
-Machines_TableSql = """CREATE TABLE Machines(
+Machine_TableSql = """CREATE TABLE Machine(
 ID INT(20) PRIMARY KEY AUTO_INCREMENT,
 NAME VARCHAR(100) NOT NULL,
 ROOM_ID INT(20),
-BUILDING_ID INT(20),
-DEPT_NAME VARCHAR(100),
+#BUILDING_ID INT(20),
+#DEPT_NAME VARCHAR(100),
 DEL BOOLEAN DEFAULT FALSE)"""
-
 
 
 
@@ -183,6 +189,7 @@ if not table_exists("Machine",cursor):
 	cursor.execute(Machine_TableSql)
 	print("Machine table created")
 
+
 insert= "INSERT INTO Patient_Outdoor(NAME, AGE, SEX, ADDRESS, SYMPTOMPS, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME, VISIT_DATE)\
 	VALUES('Saidul Kabir',23,'MALE','126/1,WAPDA ROAD,RAMPURA,DHAKA','FEVER,COUGH','CORONA','NAPA','01910399849','DR ABCD','2020-2-21');"
 cursor.execute(insert)
@@ -192,5 +199,7 @@ cursor.execute(insert)
 insert= "INSERT INTO Patient_Admission(NAME, AGE, SEX, ADDRESS, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME, ADMIT_DATE,BUILDING_NO,WARD,ROOM_NO,BED_NO)\
 	VALUES('Saidul Kabir',23,'MALE','126/1,WAPDA ROAD,RAMPURA,DHAKA','CANCER','NAPA','01910399849','DR ABCD','2020-2-21',5,'CANCER',102,5);"
 cursor.execute(insert)
+
+insert = "INSERT INTO Report"
 connection.commit()
 connection.close()
