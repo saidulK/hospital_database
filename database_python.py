@@ -7,42 +7,50 @@ CONDITION_FIELDS = ["LONG","DATE","TIME"]
 #"Patient_Outdoor":, "Patient_Emergency": , "Patient_Admission":, "Report":, "Doctor":, "Staff":, "Vehicle":, "Medicine":, "Building":, "Room":, "Machines":
 TABLE_NAMES = ["Patient_Outdoor", "Patient_Emergency", "Patient_Admission", "Report", "Doctor", "Staff", "Vehicle", "Medicine", "Building", "Room", "Machines"]
 #"Patient_Outdoor": [1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,0,1,1,0], "Patient_Admission":[1,1,1,1,0,1,1,1,1,1,1,1,1,0],
-TABLE_ACCESS = {"doctor_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,1,0],"Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,1,1,0]}
-				,"R":{"Patient_Outdoor": [1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,0,1,1,0], "Patient_Admission":[1,1,1,1,0,1,1,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,1,1,0],"Doctor":[1,1,1,1,0,1,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,0,0,0], "Machines": [0,1,0,1,1,0]}
-				,"U":{"Patient_Outdoor": [1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,0,1,1,0], "Patient_Admission":[1,1,1,1,0,1,1,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,1,1,0]}
+TABLE_ACCESS = {"doctor_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,0],"Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,0]}
+				,"R":{"Patient_Outdoor": [1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,0,1,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,0],"Doctor":[1,1,1,1,0,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,0,0,0], "Machines": [0,1,1,0]}
+				,"U":{"Patient_Outdoor": [1,0,0,0,0,1,0,1,0,0], "Patient_Emergency":[1,0,0,0,0,1,0,1,1,0,0], "Patient_Admission":[1,0,0,0,0,0,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,0]}
 				,"D":["Medicine","Report"]}
-				,"staff_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,0,0,0,0,0]}
-				,"R":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,1,0],"Medicine": [1,1,1,1,1,0],"Report": [1,1,1,0,0,0,0,0],"Doctor": [1,1,1,1,0,1,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,0,0,0], "Machines": [0,1,1,1,1,0]}
-				,"U":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,1,0],"Medicine": [1,1,1,1,1,0],"Report": [1,1,1,0,0,0,0,0],"Doctor": [1,1,1,1,0,1,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,0,0,0]}
+				,"staff_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,0],"Report":[1,0,0,0,0,0]}
+				,"R":{"Patient_Outdoor":[1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,0],"Medicine": [1,1,1,1,1,0],"Report": [1,1,0,0,1,0],"Doctor": [1,1,1,1,0,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,1,1,0], "Machines": [0,1,1,0]}
+				,"U":{"Patient_Outdoor":[1,0,0,0,0,1,1,1,1,0], "Patient_Emergency":[1,0,0,0,0,1,1,1,1,1,0], "Patient_Admission": [1,0,0,0,0,1,1,1,1,0,1,1,0],"Report": [1,1,0,0,0,0],"Doctor": [1,0,0,0,0,1,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0]}
 				,"D":["Patient_Outdoor", "Patient_Emergency", "Patient_Admission", "Medicine","Report"]}
 				,"patient_view":{"C":{}
-				,"R":{}
-				,"U":{"Patient_Outdoor":[0,1,1,1,1,0,1,0,0,0], "Patient_Emergency":[0,1,1,1,1,0,1,0,0,0], "Patient_Admission": [0,1,1,1,1,0,0,0,0,0,1,0,0,0]}
+				,"R":{"Patient_Outdoor":[0,1,0,1,0,0,1,0,1,0], "Patient_Emergency":[0,1,0,1,0,1,0,0,1,0,0], "Patient_Admission": [0,1,0,1,0,0,0,0,1,0,1,0,0],"Building":[1,1,0,0,0,0,1,0],"Report":[1,1,0,0,1,0]} #,"Report":[1,1,0,0,1,0]
+				,"U":{"Patient_Outdoor":[0,1,1,1,1,0,1,0,0,0], "Patient_Emergency":[0,1,1,1,1,0,1,0,0,0,0], "Patient_Admission": [0,1,1,1,1,0,0,0,0,1,0,0,0]}
 				,"D":[]}
-				,"management_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,1,1,1,1,1,1,1,1,1,0], "Report":[1,1,1,0,0,0,0,0], "Doctor": [1,1,1,1,1,1,1,1,1,1,0], "Staff":[1,1,1,1,1,1,1,1,1,0], "Vehicle":[1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0], "Building":[1,1,1,1,1,1,1,0], "Room":[1,1,1,1,1,0], "Machines": [1,1,1,0]}
-				,"R":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,1,1,1,1,1,1,1,1,1,0], "Report":[1,1,1,0,0,0,0,0], "Doctor": [1,1,1,1,1,1,1,1,1,1,0], "Staff": [1,1,1,1,1,1,1,1,1,0], "Vehicle":[1,1,1,1,1,0], "Medicine": [1,1,1,1,1,0], "Building":[1,1,1,1,1,1,1,0], "Room":[1,1,1,1,1,0], "Machines":[1,1,1,0]}
-				,"U":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,1,1,1,1,1,1,1,1,1,0], "Report":[1,1,1,0,0,0,0,0], "Doctor": [1,1,1,1,1,1,1,1,1,1,0], "Staff": [1,1,1,1,1,1,1,1,1,0], "Vehicle":[1,1,1,1,1,0], "Medicine": [1,1,1,1,1,0], "Building":[1,1,1,1,1,1,1,0], "Room":[1,1,1,1,1,0], "Machines":[1,1,1,0]}
+				,"management_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,1,1,1,1,1,1,1,1,0], "Report":[1,1,1,1,1,0], "Doctor": [1,1,1,1,1,1,1,1,1,0], "Staff":[1,1,1,1,1,1,1,1,1,0], "Vehicle":[1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0], "Building":[1,1,1,1,1,1,1,0], "Room":[1,1,1,1,1,0], "Machines": [1,1,1,0]}
+				,"R":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,1,1,1,1,1,1,1,1,0], "Report":[1,1,1,1,1,0], "Doctor": [1,1,1,1,1,1,1,1,1,0], "Staff": [1,1,1,1,1,1,1,1,1,0], "Vehicle":[1,1,1,1,1,0], "Medicine": [1,1,1,1,1,0], "Building":[1,1,1,1,1,1,1,0], "Room":[1,1,1,1,1,0], "Machines":[1,1,1,0]}
+				,"U":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,1], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,1], "Patient_Admission":[1,1,1,1,1,1,1,1,1,1,1,1,1], "Report":[1,1,1,1,1,1], "Doctor": [1,1,1,1,1,1,1,1,1,1], "Staff": [1,1,1,1,1,1,1,1,1,1], "Vehicle":[1,1,1,1,1,1], "Medicine": [1,1,1,1,1,1], "Building":[1,1,1,1,1,1,1,1], "Room":[1,1,1,1,1,1], "Machines":[1,1,1,1]}
 				,"D":["Patient_Outdoor", "Patient_Emergency", "Patient_Admission", "Report", "Doctor", "Staff", "Vehicle", "Medicine", "Building", "Room", "Machines"]}}
 
-ALL_VIEWS = {"Patient_Outdoor":{"doctor_view":"ID, NAME, AGE, SEX, SYMPTOMPS, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME"
-			,"staff_view":"ID, NAME, AGE, SEX, ADDRESS, CONTACT, DOC_NAME, VISIT_DATE"}
-			,"Patient_Admission":{"doctor_view":"ID,NAME, AGE, SEX, DIAGNOSIS, MEDICINE, CONTACT, DOC_NAME, WARD, BUILDING_NO, ROOM_NO,BED_NO"
-			,"staff_view":"ID, NAME, AGE, SEX, ADDRESS, CONTACT, DOC_NAME, ADMIT_DATE, WARD, BUILDING_NO, ROOM_NO, BED_NO"}
-			,"Patient_Emergency":{"ID,doctor_view":"NAME, AGE, SEX, SYMPTOMPS, EMERGENCY, MEDICINE, CONTACT, DOC_NAME"
-			,"staff_view":"ID, NAME, AGE, SEX, ADDRESS, EMERGENCY, CONTACT, DOC_NAME, VISIT_DATE"}}
+JOIN_ACCESS = {"Patient_Outdoor":{"Report":["REPORT_ID","ID"],"Doctor":["DOC_ID","ID"]}
+				, "Patient_Emergency":{"Report":["REPORT_ID","ID"],"Doctor":["DOC_ID","ID"]}
+				, "Patient_Admission":{"Report":["REPORT_ID","ID"],"Doctor":["DOC_ID","ID"],"Room":["ROOM_NO","ID"]}
+				, "Report":{"Patient_Outdoor":["ID","REPORT_ID"],"Patient_Emergency":["ID","REPORT_ID"],"Patient_Admission":["ID","REPORT_ID"]}
+				, "Doctor":{"Patient_Outdoor":["ID","DOC_ID"],"Patient_Emergency":["ID","DOC_ID"],"Patient_Admission":["ID","DOC_ID"],"Room":["ROOM_NO","ID"]}
+				, "Staff":{"Building":["BUILDING_ID","ID"]}
+				, "Vehicle":{"Building":["BUILDING_ID","ID"]}
+				, "Medicine":{}
+				, "Building":{"Vehicle":["ID","BUILDING_ID"],"Staff":["ID","BUILDING_ID"],"Room":["ID","BUILDING_ID"]}
+				, "Room":{"Patient_Admission":["ID","ROOM_NO"],"Doctor":["ID","ROOM_NO"],"Building":["BUILDING_ID","ID"],"Machines":["ID","ROOM_ID"]}
+				, "Machines":{"Room":["ROOM_ID","ID"]}}
+
 
 def connect2server(server_name,password=""):
 	try:
 		connection = mysql.connector.connect(host="localhost",user="root",passwd=password,database=server_name )
 		cursor = connection.cursor(buffered = True)
-		print("Welcome to Hospital Database")
+		print("_________________________________________")
+		print("\n    Welcome to DU EEE Hospital Database\n")
+		print("_________________________________________")
+		return connection,cursor
 	except Exception as e:
 		print("Can't connect to Database: ",e)
-
-	return connection,cursor
+	
 
 def get_login_info():
-	print("\nLogin as: \n1)Enter D for Doctor \n2)Enter S for Staff\n3)Enter P for Patient\n4)Enter M for Management\n")
+	print("\nLogin as: \n\n1)Enter D for Doctor \n2)Enter S for Staff\n3)Enter P for Patient\n4)Enter M for Management\n5)Enter E for Exit\n")
 	inp = input()
 	if inp.lower() =="d":
 		return "doctor_view"
@@ -52,6 +60,8 @@ def get_login_info():
 		return "patient_view"
 	elif inp.lower() =="m":
 		return "management_view"
+	elif inp.lower() == "e":
+		return None
 	else:
 		print("Invalid Command")
 		return get_login_info()
@@ -63,8 +73,6 @@ def get_table_input(table_list):
 	inp = input("\n")
 	try:
 		inp = int(inp)-1
-		print(inp, list(range(len(table_list))))
-
 		if inp in list(range(len(table_list))):
 			return table_list[inp]
 		else:
@@ -73,11 +81,13 @@ def get_table_input(table_list):
 		print(e)
 		return get_table_input(table_list)
 
-def get_input(field_name,field_type,tag="",func=None):
+def get_input(field_name,field_type,tag="",func=None,end=""):
 	form=""
 	if field_type == "DATE":
 		form = "(YY-MM-DD)"
-	inp = input(tag+" "+field_name+"{} :".format(form))
+	elif field_type == "BOOLEAN":
+		form = "(TRUE/FALSE,1/0)"
+	inp = input(tag+" "+field_name+"{} :".format(form)+end)
 	try:
 		if inp =="":
 			return inp
@@ -114,9 +124,10 @@ def print_table_data(field_list,data):
 			print(i," :",d)
 	else:
 		for row in data:
-			print("\n")
+			print("\n\n")
 			for field,field_value in zip(field_list,row):
-				print(field," : ",field_value," ",end ="",sep="")
+				print(field," : ",field_value," || ",end ="",sep="")
+			print("\n\n")	
 
 
 def process_long(num):
@@ -143,6 +154,18 @@ def process_boolean(boolean):
 	else:
 		raise Exception("Wrong format")
 
+def make_join_query(table_name,join_table,table_view,join_table_view,foreign_keys):
+	#SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+	fields =""
+	for field in table_view.split(","):
+		fields += table_name+"."+field+","
+	
+	for field in join_table_view.split(","):
+		fields += join_table+"."+field+","
+	fields = fields[:-1]
+	query = "SELECT " + fields + " FROM " + table_name+" LEFT JOIN "+join_table+" ON "+ table_name+"."+foreign_keys[0]+"="+join_table+"."+foreign_keys[1]
+	query += " and "+table_name+".DEL = FALSE"+" and "+join_table+".DEL = FALSE"
+	return query,fields
 
 def make_insert_query(table_name,COL):
 	q = "("
@@ -212,10 +235,15 @@ def create(table_name,connection,cursor,log_view):
 				field_list.append(column)
 		values = tuple(values)
 		query = make_insert_query(table_name,field_list)
-		cursor.execute(query,values)
-		connection.commit()
-		print("Entry successfully added to table: "+table_name)
-
+		
+		print("\nAdd this entry?(Y/N):")
+		inp = input()
+		if inp.lower() == "y":
+			cursor.execute(query,values)
+			connection.commit()
+			print("\n\nEntry successfully added to table: "+table_name)
+		else:
+			print("\n\nEntry was not added\n")
 	except Exception as e:
 		print(e)
 		connection.rollback()
@@ -231,28 +259,52 @@ def retrieve(table_name,connection,cursor,log_view):
 		cursor.execute("SELECT * FROM {}".format(table_name))
 		columns = cursor.description
 		view = get_view(columns,TABLE_ACCESS[log_view]["R"][table_name])
-
 		#print("VIEW:",view)	
-		key_name = input("\n* Press Enter to view whole table \n\n* Enter 1 to search with primary key value \n\n* Enter something else to search with multiple key values:\n")
+		option_name = input("\n\n* Press Enter to view whole table \n\n* Enter 1 to JOIN Tables \n\n* Enter 2 to search with primary key value \n\n* Enter 3 to search with multiple key values\n\n* Enter anything else to exit\n\n")
 
-		if key_name =="":
+		if option_name =="":
 			cursor.execute("SELECT {} FROM {} WHERE DEL=FALSE".format(view,table_name))
 			data = cursor.fetchall()
 			if len(data) == 0:
-				raise Exception("Data doesn't Exist")
+				raise Exception("\nData doesn't Exist")
 			field_list = view.split(",")
 			print_table_data(field_list,data)	
 			#print(view)
 
 			#for d in data:
 			#	print(d)
+		elif option_name =="1":
+			#{"Patient_Outdoor":{"Report":["REPORT_ID","ID"],"Doctor":["DOC_ID","ID"]}
+			#print(list(JOIN_ACCESS[table_name].keys()))
+			#SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+			join_table_list = list(JOIN_ACCESS[table_name].keys())
+			join_table = get_table_input(join_table_list)
 
-		elif key_name == "1": 
+			if join_table not in list(TABLE_ACCESS[log_view]["R"].keys()):
+				print("\n\nUser doesn't have access to Table\n")
+			elif len(join_table_list) == 0:
+				print("\n\nTables are not related\n")
+			else:
+				cursor.execute("SELECT * FROM {}".format(join_table))
+				columns = cursor.description
+				join_table_view = get_view(columns,TABLE_ACCESS[log_view]["R"][join_table])
+				foreign_keys = JOIN_ACCESS[table_name][join_table]
+				query,field_list = make_join_query(table_name,join_table,view,join_table_view,foreign_keys)
+				
+				cursor.execute(query)
+				data = cursor.fetchall()
+				if len(data) == 0:
+					raise Exception("\n\nData doesn't Exist")
+				field_list = field_list.split(",")
+				print_table_data(field_list,data)
+		
+
+		elif option_name == "2": 
 			key_value = input("\nEnter {} value: ".format(primary_key_name))
 			cursor.execute("SELECT {} FROM {} WHERE DEL=FALSE and {}={}".format(view,table_name,primary_key_name,key_value))
 			data = cursor.fetchall()
 			if len(data) == 0:
-				raise Exception("Data doesn't Exist")
+				raise Exception("\n\nData doesn't Exist")
 			field_list = view.split(",")
 
 			print("\n\n Data for {} = {}:\n".format(primary_key_name,key_value))
@@ -260,7 +312,7 @@ def retrieve(table_name,connection,cursor,log_view):
 			#print("\n\n Data for {} = {}:\n".format(primary_key_name,key_value))	
 			#for i,d in zip(field_list,data[0]):
 			#	print(i," :",d)
-		else:	
+		elif option_name == "3":	
 			print("\n\nEnter key values: \n\n* Press Enter if you want to skip key\n\n* Enter < or > to set range\n")
 			key_names = []
 			key_values = []
@@ -275,33 +327,37 @@ def retrieve(table_name,connection,cursor,log_view):
 				if key != "":			
 					if field_type in CONDITION_FIELDS and key =="<" :
 						key = get_input(field_name,field_type,tag="\nMAX VALUE of ")
-						conditions.append(("<",field_name))
+						conditions.append(("<=",field_name))
 						condition_values.append(key)
 						key = get_input(field_name,field_type,tag="\nMIN VALUE of ")
 						if key !="":
-							conditions.append((">",field_name))
+							conditions.append((">=",field_name))
 							condition_values.append(key)
 					elif field_type in CONDITION_FIELDS and key ==">" :
 						key = get_input(field_name,field_type,tag="\nMIN VALUE of ")
-						conditions.append((">",field_name))
+						conditions.append((">=",field_name))
 						condition_values.append(key)
 						key = get_input(field_name,field_type,tag="\nMAX VALUE of ")
 						if key !="":
-							conditions.append(("<",field_name))
+							conditions.append(("<=",field_name))
 							condition_values.append(key)
 					else:
 						key_names.append(key_name)
 						key_values.append(key)
-			query = make_retrieve_query(table_name,view,key_names,conditions)
-			key_values = key_values + condition_values
-			key_values = tuple(key_values)
-			cursor.execute(query,key_values)
-			data = cursor.fetchall()
 
-			if len(data) == 0:
-				raise Exception("\n\nData doesn't Exist")
-			field_list = view.split(",")
-			print_table_data(field_list,data)
+			if len(key_names)!=0 or len(conditions)!=0:
+				query = make_retrieve_query(table_name,view,key_names,conditions)
+				key_values = key_values + condition_values
+				key_values = tuple(key_values)
+				cursor.execute(query,key_values)
+				data = cursor.fetchall()
+
+				if len(data) == 0:
+					raise Exception("\n\nData doesn't Exist")
+				field_list = view.split(",")
+				print_table_data(field_list,data)
+			else:
+				print("\n\nNo Fields selected")
 			#print(view)
 			#for d in data:
 			#	print(d)
@@ -310,14 +366,14 @@ def retrieve(table_name,connection,cursor,log_view):
 
 def update(table_name,connection,cursor,log_view):	
 	try:
-		print("\nUpdating in: "+table_name)
+		print("\n\nUpdating in: "+table_name)
 		cursor.execute("SHOW KEYS FROM {} WHERE Key_name = 'PRIMARY'".format(table_name))
 		primary_keys = cursor.fetchall()
 		key_name = primary_keys[0][4]
 		key_value = input("\n\nInput "+key_name+" of row you want to update: ")
 		cursor.execute("SELECT * FROM {} WHERE {} = {}".format(table_name,key_name,key_value))
 		if len(cursor.fetchall()) == 0:
-			raise Exception("Data doesn't exist")		
+			raise Exception("\n\nData doesn't exist")		
 		print("\nPress Enter if you don't want to change a field")
 
 		cursor.execute("SELECT * FROM {}".format(table_name))
@@ -328,19 +384,30 @@ def update(table_name,connection,cursor,log_view):
 		values = []
 		field_list = []
 		for column in columns:
-			cursor.execute("SELECT {} FROM {}".format(column,table_name))
+			cursor.execute("SELECT {} FROM {} WHERE {} = {}".format(column,table_name,key_name,key_value))
 			field_type = FieldType.get_info(cursor.description[0][1])
 			field_name = cursor.description[0][0]
-			inp = get_input(column,field_type)
+			field_data = cursor.fetchall()[0][0]
+
+			inp = get_input(column,field_type,end=" {}  New Value:  ".format(field_data))
 			if inp !="":			
 				values.append(inp)
-				field_list.append(column)	
-		values = tuple(values)
-		query = make_update_query(table_name,field_list,key_name,key_value)
-		cursor.execute(query,values)
-		connection.commit()
-		print("Entry successfully updated in table: "+table_name)
-		
+				field_list.append(column)
+		if len(field_list)!=0:	
+			values = tuple(values)
+			query = make_update_query(table_name,field_list,key_name,key_value)
+
+			print("\nUpdate this entry?(Y/N):")
+			inp = input()
+			if inp.lower() == "y":
+				cursor.execute(query,values)
+				connection.commit()
+				print("\n\nEntry successfully updated in table: "+table_name)
+			else:
+				print("\n\nEntry was not updated\n")
+		else:
+			print("\n\nNo Field Selected")		
+
 	except Exception as e:
 		print(e)
 		connection.rollback()
@@ -357,7 +424,7 @@ def delete(table_name,connection,cursor,log_view):
 		cursor.execute(query)
 		data = cursor.fetchall()
 		if len(data) == 0:
-			raise Exception("Data doesn't exist")
+			raise Exception("\n\nData doesn't exist")
 
 		soft_delete = True
 
@@ -378,7 +445,7 @@ def delete(table_name,connection,cursor,log_view):
 			cursor.execute(query)
 			data = cursor.fetchall()
 			if len(data) == 0:
-				raise Exception("Data doesn't exist")
+				raise Exception("\n\nData doesn't exist")
 			cursor.execute("SELECT * FROM {}".format(table_name))
 			columns = cursor.description
 			columns = get_view(columns,TABLE_ACCESS[log_view]["R"][table_name])
@@ -389,15 +456,15 @@ def delete(table_name,connection,cursor,log_view):
 			print("\n\n")
 			for i,d in zip(field_list,data[0]):
 				print(i," : ",d)
-			print("Do you want to delete the Entry: (Y/N)")
+			print("\n\nDo you want to delete the Entry: (Y/N)")
 			ans = input()
-			if ans == "Y" or ans =="y" :
+			if ans.lower()=="y" :
 				query = "UPDATE {} SET DEL=TRUE WHERE {}={}".format(table_name,key_name,key_value)
 				cursor.execute(query)
 				connection.commit()
-				print("Entry deleted successfully")
+				print("\n\nEntry deleted successfully")
 			else:
-				print("Entry was not deleted")
+				print("\n\nEntry was not deleted")
 		else:
 			query = "SELECT * FROM {} WHERE {} = {}".format(table_name,key_name,key_value)	
 			cursor.execute(query)
@@ -408,19 +475,19 @@ def delete(table_name,connection,cursor,log_view):
 			columns = get_view(columns,TABLE_ACCESS[log_view]["R"][table_name])
 			field_list = columns.split(",")
 
-			field_list = ALL_VIEWS[table_name][log_view].split(",")
+			#field_list = ALL_VIEWS[table_name][log_view].split(",")
 			print("\n\n")
 			for i,d in zip(field_list,data[0]):
 				print(i," :",d)
 			print("\nDo you want to permanently delete the Entry: (Y/N): ")
 			ans = input()
-			if ans == "Y" or ans =="y" :
+			if ans.lower() =="y" :
 				query = "DELETE FROM {} WHERE {}={}".format(table_name,key_name,key_value)
 				cursor.execute(query)
 				connection.commit()
-				print("Entry deleted successfully")
+				print("\n\nEntry deleted successfully")
 			else:
-				print("Entry was not deleted")
+				print("\n\nEntry was not deleted")
 
 	except Exception as e:
 		print(e)
@@ -430,7 +497,7 @@ if __name__ == "__main__":
 	connection,cursor = connect2server("medical database")
 
 	#create("Patient_Admission",connection,cursor,"doctor_view")
-	#retrieve("Patient_Outdoor",connection,cursor,"staff_view")
+	#retrieve("Report",connection,cursor,"staff_view")
 	#update("Patient_Admission",connection,cursor,"staff_view")
 	#delete("Patient_Outdoor",connection,cursor,"doctor_view")
 
