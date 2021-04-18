@@ -11,9 +11,9 @@ TABLE_ACCESS = {"doctor_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Pa
 				,"R":{"Patient_Outdoor": [1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,1,1,1,1,0], "Patient_Admission":[1,1,1,1,0,1,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,0],"Doctor":[1,1,1,1,0,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,0,0,0], "Machines": [0,1,1,0]}
 				,"U":{"Patient_Outdoor": [1,0,0,0,0,1,0,1,0,0], "Patient_Emergency":[1,0,0,0,0,1,0,1,1,0,0], "Patient_Admission":[1,0,0,0,0,0,1,1,1,1,1,1,0], "Medicine":[1,1,1,1,1,0],"Report":[1,1,1,1,1,0]}
 				,"D":["Medicine","Report"]}
-				,"staff_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,0],"Report":[1,0,0,0,0,0]}
+				,"staff_view":{"C":{"Patient_Outdoor":[1,1,1,1,1,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,1,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,0],"Report":[1,1,0,0,0,0]}
 				,"R":{"Patient_Outdoor":[1,1,1,1,0,1,1,1,1,0], "Patient_Emergency":[1,1,1,1,0,1,1,1,1,1,0], "Patient_Admission": [1,1,1,1,1,1,1,1,1,1,1,1,0],"Medicine": [1,1,1,1,1,0],"Report": [1,1,0,0,1,0],"Doctor": [1,1,1,1,0,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0], "Building":[1,1,0,0,0,0,1,0], "Room":[1,1,1,1,1,0], "Machines": [0,1,1,0]}
-				,"U":{"Patient_Outdoor":[1,0,0,0,0,1,1,1,1,0], "Patient_Emergency":[1,0,0,0,0,1,1,1,1,1,0], "Patient_Admission": [1,0,0,0,0,1,1,1,1,0,1,1,0],"Report": [1,1,0,0,0,0],"Doctor": [1,0,0,0,0,1,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0]}
+				,"U":{"Patient_Outdoor":[1,0,0,0,0,1,1,1,1,0], "Patient_Emergency":[1,0,0,0,0,1,1,1,1,1,0], "Patient_Admission": [1,0,0,0,0,1,1,1,1,0,1,1,0],"Report": [1,1,0,0,0,0],"Doctor": [1,0,0,0,0,1,1,1,0,0], "Staff":[1,1,1,0,0,0,1,1,0,0]}
 				,"D":["Patient_Outdoor", "Patient_Emergency", "Patient_Admission", "Medicine","Report"]}
 				,"patient_view":{"C":{}
 				,"R":{"Patient_Outdoor":[0,1,0,1,0,0,1,0,1,0], "Patient_Emergency":[0,1,0,1,0,1,0,0,1,0,0], "Patient_Admission": [0,1,0,1,0,0,0,0,1,0,1,0,0],"Building":[1,1,0,0,0,0,1,0],"Report":[1,1,0,0,1,0]} #,"Report":[1,1,0,0,1,0]
@@ -63,11 +63,15 @@ def get_login_info():
 	elif inp.lower() == "e":
 		return None
 	else:
+		print("\n\n\n________________")
 		print("Invalid Command")
+		print("________________")
 		return get_login_info()
 
 def get_table_input(table_list):
-	
+	if len(table_list) == 0:
+		raise Exception("No Table in List!")
+		return None
 	for i,table in enumerate(table_list):
 		print("\n{}) Enter {} for {}".format(i+1,i+1,table))
 	inp = input("\n")
@@ -278,25 +282,28 @@ def retrieve(table_name,connection,cursor,log_view):
 			#print(list(JOIN_ACCESS[table_name].keys()))
 			#SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 			join_table_list = list(JOIN_ACCESS[table_name].keys())
-			join_table = get_table_input(join_table_list)
 
-			if join_table not in list(TABLE_ACCESS[log_view]["R"].keys()):
-				print("\n\nUser doesn't have access to Table\n")
-			elif len(join_table_list) == 0:
-				print("\n\nTables are not related\n")
+			if len(join_table_list) == 0:	
+				print("\n\nNo Connected Table Found!")
 			else:
-				cursor.execute("SELECT * FROM {}".format(join_table))
-				columns = cursor.description
-				join_table_view = get_view(columns,TABLE_ACCESS[log_view]["R"][join_table])
-				foreign_keys = JOIN_ACCESS[table_name][join_table]
-				query,field_list = make_join_query(table_name,join_table,view,join_table_view,foreign_keys)
-				
-				cursor.execute(query)
-				data = cursor.fetchall()
-				if len(data) == 0:
-					raise Exception("\n\nData doesn't Exist")
-				field_list = field_list.split(",")
-				print_table_data(field_list,data)
+				join_table = get_table_input(join_table_list)
+				if join_table not in list(TABLE_ACCESS[log_view]["R"].keys()):
+					print("\n\nUser doesn't have access to Table\n")
+				elif len(join_table_list) == 0:
+					print("\n\nTables are not related\n")
+				else:
+					cursor.execute("SELECT * FROM {}".format(join_table))
+					columns = cursor.description
+					join_table_view = get_view(columns,TABLE_ACCESS[log_view]["R"][join_table])
+					foreign_keys = JOIN_ACCESS[table_name][join_table]
+					query,field_list = make_join_query(table_name,join_table,view,join_table_view,foreign_keys)
+					
+					cursor.execute(query)
+					data = cursor.fetchall()
+					if len(data) == 0:
+						raise Exception("\n\nData doesn't Exist")
+					field_list = field_list.split(",")
+					print_table_data(field_list,data)
 		
 
 		elif option_name == "2": 
@@ -430,7 +437,7 @@ def delete(table_name,connection,cursor,log_view):
 
 		if log_view == "management_view": 
 			while True:	
-				del_type = input("\nEnter 1 for Soft Delete and 2 for Hard Delete: \n")
+				del_type = input("\n\nEnter 1 for Soft Delete and 2 for Hard Delete: \n")
 				if del_type == "2":
 					soft_delete = False
 					break
@@ -496,6 +503,15 @@ def delete(table_name,connection,cursor,log_view):
 if __name__ == "__main__":
 	connection,cursor = connect2server("medical database")
 
+	for view in list(TABLE_ACCESS.keys()):
+		for action in ["C","R","U"]:
+			for table in list(TABLE_ACCESS[view][action].keys()):
+				cursor.execute("SELECT * FROM {}".format(table))
+				columns = cursor.description
+				cols = get_view(columns,TABLE_ACCESS[view][action][table])
+				print(view,action,table,"       ",cols)#,"       ",TABLE_ACCESS[view][action][table]) 
+
+			print("\n\n")
 	#create("Patient_Admission",connection,cursor,"doctor_view")
 	#retrieve("Report",connection,cursor,"staff_view")
 	#update("Patient_Admission",connection,cursor,"staff_view")

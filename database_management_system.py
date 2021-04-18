@@ -4,8 +4,10 @@ from database_python import *
 
 
 connection,cursor = connect2server("medical database")
-login_view = get_login_info()
-if login_view is not None:
+while True:
+	login_view = get_login_info()
+	if login_view is  None:
+		break
 	while True:
 		print("\n\n\nEnter Operation: \n1) C for Create \n2) R for Retrieve \n3) U for Update \n4) D for Delete \n5) E for Exit\n")
 		op = input()
@@ -53,6 +55,9 @@ if login_view is not None:
 			else:
 				print("\n Operation not allowed for this user")
 		else:
-			print("\nInvalid Command")
+			print("\n\n\n________________")
+			print("Invalid Command")
+			print("________________")
+			
 
 connection.close()
