@@ -89,7 +89,7 @@ def get_input(field_name,field_type,tag="",func=None,end=""):
 	form=""
 	if field_type == "DATE":
 		form = "(YY-MM-DD)"
-	elif field_type == "BOOLEAN":
+	elif field_type == "TINY":
 		form = "(TRUE/FALSE,1/0)"
 	inp = input(tag+" "+field_name+"{} :".format(form)+end)
 	try:
@@ -103,7 +103,7 @@ def get_input(field_name,field_type,tag="",func=None,end=""):
 		elif field_type == 'DATE':
 			inp = process_date(inp)
 			return inp
-		elif field_type == "BOOLEAN":
+		elif field_type == "TINY":
 			inp = process_boolean(inp)
 			return inp
 		else:
@@ -395,7 +395,6 @@ def update(table_name,connection,cursor,log_view):
 			field_type = FieldType.get_info(cursor.description[0][1])
 			field_name = cursor.description[0][0]
 			field_data = cursor.fetchall()[0][0]
-
 			inp = get_input(column,field_type,end=" {}  New Value:  ".format(field_data))
 			if inp !="":			
 				values.append(inp)
