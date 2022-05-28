@@ -21,14 +21,14 @@ A Doctor has access to Patient_Emergency table. The fields accessable to a docto
 The Management login can access all operations across all fields in all the tables. Authorization was not implemented.  
 
 
-# Operations
+### Operations
 CRUD(Create,Retrieve,Update,Delete) was implemented
 
-# Create 
+### Create 
 
 User can only create the fields to which he has access. For example a staff can only create a report based on ID and Blood Group. Only doctors have access to rest of the fields in report.
 
-# Retrieve
+### Retrieve
 
 4 types of retrieve were implemented.
 * The whole table is shown
@@ -37,11 +37,11 @@ User can only create the fields to which he has access. For example a staff can 
 * Retrieve based on values/range of multiple fields 
 The fields that are shown are based on the acess of the user
 
-# Update
+### Update
 
 Only row specific update was selected based on primary key. Also user can update only the tables and fields he has access to.
 
-# Delete
+### Delete
 
 Delete is also row specific and implemented based on primary key. Only management has access to hard delete a row. All other users can only soft delete.
 
