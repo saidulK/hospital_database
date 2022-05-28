@@ -46,7 +46,7 @@ Only row specific update was selected based on primary key. Also user can update
 Delete is also row specific and implemented based on primary key. Only management has access to hard delete a row. All other users can only soft delete.
 
 
-# VIEWS
+## VIEWS
 
 doctor_view CREATE Patient_Outdoor           ID,NAME,AGE,SEX,ADDRESS,REPORT_ID,CONTACT,DOC_ID,VISIT_DATE
 doctor_view CREATE Patient_Emergency         ID,NAME,AGE,SEX,ADDRESS,REPORT_ID,CONTACT,ROOM_NO,DOC_ID,VISIT_DATE
